@@ -1,0 +1,1336 @@
+@import "vars"
+@import "keyframes"
+@import "mixins"
+@font-face
+  font-family: "PT_Sans"
+  src: url("../fonts/PT_Sans/PTSans-Regular.ttf") format("truetype")
+  font-weight: 400
+@font-face
+  font-family: "PT_Sans"
+  src: url("../fonts/PT_Sans/PTSans-Bold.ttf") format("truetype")
+  font-weight: 600
+
+@font-face
+  font-family: "Roboto"
+  src: url("../fonts/Lato/Lato-Regular.ttf") format("truetype")
+  font-weight: 400
+@font-face
+  font-family: "Roboto"
+  src: url("../fonts/Lato/Lato-Bold.ttf") format("truetype")
+  font-weight: 600
+
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+ul, li
+  list-style: none
+
+a, button
+  color: inherit
+  cursor: pointer
+
+a
+  text-decoration: none
+
+form
+  font-family: "Lato", sans-serif
+  input.error
+    border: 2px solid red
+
+
+button, input, textarea
+  background-color: inherit
+  appearance: none
+  border: none
+  border: 0
+  outline: none
+
+html
+  font-size: 10px
+
+body
+  font-family: "PT_Sans", sans-serif
+  font-weight: 400
+  color: $textClr
+  line-height: 1
+
+.container
+  max-width: 1920px
+  padding: 0 350px
+  margin: 0 auto
+
+//================= HEADER ===============//
+#header
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  padding: 15px 0
+  z-index: 10
+  transition: background-color 0.3s
+  &.toggle-bg
+    background-color: #ffffff
+    .menu a
+      color: #090a17
+    .logo img
+      &.logo-light
+        display: none
+      &.logo-dark
+        display: block
+  .header__wrap
+    display: flex
+    justify-content: space-between
+  .header__menu
+    display: flex
+    align-items: center
+  .header__show-menu
+    display: none
+    position: relative
+    padding-left: 15px
+    order: 1
+    span
+      width: 25px
+      height: 2px
+      background-color: $lightBg
+      display: block
+      margin: 3px 0
+      transition: all 0.5s
+      &.toggle-bg
+        background-color: #000000
+    &.show
+      span:nth-child(1)
+        background-color: #ffffff
+        transform: rotate(135deg) translate(2px, -2px)
+      span:nth-child(2)
+        background-color: #ffffff
+        transform: scale(0)
+      span:nth-child(3)
+        background-color: #ffffff
+        transform: rotate(-135deg) translate(5px, 5px)
+  .logo
+    padding-right: 40px
+    img
+      width: 145px
+      &.logo-dark
+        display: none
+  .menu
+    li
+      display: inline-block
+    a.hidden-logo
+      display: none
+    a
+      font-weight: 600
+      font-size: 15px
+      display: inline-block
+      padding: 0 10px
+      transition: width 0.3s
+      @include underline
+  .header__contacts
+    width: 37px
+    height: 37px
+    border-radius: 50%
+    background-color: #406ca5
+    text-align: center
+    animation: pulse 2s ease-in-out infinite
+    svg
+      display: inline-block
+      vertical-align: middle
+      width: 18px
+      height: 18px
+      path
+        fill: #ffffff
+
+//================= HOME ===============//
+#home
+  padding-top: 100px
+  padding-bottom: 95px
+  background-image: url('../img/tokiobek2.jpg')
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: left center
+  .header__wrap
+    display: flex
+    justify-content: space-between
+    align-items: center
+  .home__text
+    flex-basis: 40%
+    max-width: 425px
+    .subtitle
+      text-transform: uppercase
+      span
+        font-size: 50px
+      p
+        display: inline-block
+        font-size: 15px
+        font-weight: 600
+        span
+          font-size: 21px
+    .event-date
+      color: $formTitle
+      font-size: 26px
+      font-weight: 600
+      text-transform: uppercase
+      padding: 48px 0 75px
+    .title
+      font-size: 50px
+      line-height: 1.2
+  .home__speakers
+    flex-basis: 60%
+    padding-left: 20px
+  .home__speakers-top
+    display: flex
+    justify-content: space-between
+    margin-bottom: 45px
+    img
+      width: 33.33%
+      padding-left: 45px
+  .home__speakers-bottom
+    display: flex
+    justify-content: space-between
+  .home__speakers-imgs
+    width: 33.33%
+    padding-left: 45px
+    img
+      width: 100%
+      margin-bottom: 45px
+  .home__cta
+    width: 66.66%
+    padding-left: 45px
+    form
+      font-family: "Lato", sans-serif
+      padding: 20px 35px 35px
+      background-color: $formBg
+      input
+        width: 100%
+        padding: 10px
+        border: 0
+        border-bottom: 2px solid #ffffff
+        color: $textClr
+        margin-bottom: 15px
+        background-color: $formBg
+        &::placeholder
+          color: $textClr
+      button
+        @include btn($btnClr, $btnHoverClr, $btnBg, $btnHoverCBg, $btnHoverCBg, 11px)
+        text-transform: uppercase
+        padding: 10px
+        width: 100%
+      .form__btn
+        @include bgBtn(#0a223c)
+        margin-top: 20px
+        position: relative
+        z-index: 1
+    .form__title
+      display: flex
+      align-items: center
+      padding-bottom: 30px
+      svg
+        width: 25px
+        height: 20px
+        margin-right: 15px
+        transform: rotate(135deg)
+        path
+          animation: pulseFill 1s cubic-bezier(.66, 0, 0, 1) infinite
+      h2
+        color: $formTitle
+        font-size: 15px
+        text-transform: uppercase
+        animation: pulseCLr 1s cubic-bezier(.66, 0, 0, 1) infinite
+
+//================= PROGRAM ==========//
+#program
+  background-color: $lightBg
+  padding: 65px 0 45px
+  h2
+    font-size: 32px
+    font-weight: 600
+    text-transform: uppercase
+    color: $titleClr
+    padding-bottom: 45px
+  .program__content
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+  .program__item
+    position: relative
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    background-color: $programItemBg
+    padding: 35px 30px 30px
+    margin-bottom: 40px
+    z-index: 1
+    h3
+      font-size: 26px
+      letter-spacing: 2px
+      font-weight: 600
+      width: 50%
+      padding-bottom: 5px
+      line-height: 1.2
+    h4
+      font-size: 11px
+      text-transform: uppercase
+      padding: 25px 0 15px
+      color: $programSubTitle
+    .program__event-date p
+      line-height: 1.4
+      font-size: 13px
+      text-transform: uppercase
+      font-weight: 600
+      span
+        color: $specialClr
+    .program__event-author
+      padding-top: 22px
+    .program__event-theme p, .program__event-author p, .about-author__more p
+      font-size: 15px
+      line-height: 1.2em
+      font-weight: 600
+      padding-bottom: 10px
+    &:nth-child(1), &:nth-child(2), &:nth-child(3)
+      flex-basis: 31.33%
+    &:nth-child(4), &:nth-child(5)
+      flex-basis: 48.33%
+    .about-author__more
+      display: none
+    img
+      width: 50%
+      position: absolute
+      top: 15px
+      right: 0
+      z-index: -1
+    .program__btn-more
+      display: inline-block
+      font-size: 12px
+      color: $specialClr
+      font-weight: 600
+      padding-top: 25px
+      padding-bottom: 20px
+    .program__btn
+      display: block
+      width: 100%
+      padding: 15px
+      background-color: $btnBg
+      border: 2px solid $specialClr
+      color: $specialClr
+      font-size: 14px
+      font-weight: 600
+      text-transform: uppercase
+      text-align: center
+      transition: background-color 0.3s, color 0.3s
+      &:hover
+        background-color: $specialClr
+        color: $btnHoverClr
+  .program__btn-part
+    text-align: center
+    width: max-content
+    margin: auto
+    @include bgBtn(#e1f2fe)
+    a
+      display: inline-block
+      @include btn($btnHoverClr, $btnClr, $btnHoverCBg, $lightBg, $btnHoverCBg, 18px)
+      &:hover
+        border-color: $lightBg
+      padding: 15px 37px
+
+//================= PRICE ==========//
+#price
+  padding-top: 50px
+  padding-bottom: 60px
+  background-image: url('../img/tokiobek2.jpg')
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: left center
+  h2
+    font-size: 32px
+    font-weight: 600
+    color: $textClr
+    padding-bottom: 50px
+    padding-left: 200px
+    span
+      display: block
+      padding-left: 150px
+      color: $specialClr
+  .price__wrap
+    display: flex
+    justify-content: space-between
+    align-items: center
+  .price__left
+    flex-basis: 25%
+    position: relative
+    &:after
+      content: ""
+      position: absolute
+      z-index: 1
+      top: 2px
+      left: 5px
+      display: block
+      width: 95px
+      height: 95px
+      border-radius: 50%
+      border: 5px solid $specialClr
+    .price__icon
+      position: relative
+      width: 50px
+      height: 50px
+      display: flex
+      align-items: center
+      justify-content: center
+      border-radius: 50%
+      background-color: $specialClr
+      border: 5px solid #252525
+      z-index: 2
+      svg
+        width: 30%
+        path
+          fill: #252525
+    p
+      position: relative
+      max-width: 200px
+      margin-right: 55px
+      left: 55px
+      top: -15px
+      z-index: 2
+      background-color: #252525
+      font-size: 13px
+      color: $textClr
+      padding: 5px
+      font-weight: 600
+  .price__right
+    flex-basis: 70%
+    display: flex
+    justify-content: space-between
+    .price__option
+      flex-basis: 48%
+      box-shadow: 0 0 31px -2px #383434
+      background-color: rgba(10, 9, 23, 0.92)
+      text-align: center
+      color: $textClr
+      padding: 40px
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      h3
+        font-size: 25px
+        padding-bottom: 60px
+        font-weight: 600
+      .price__option-top
+        &>div
+          display: flex
+          justify-content: space-between
+          margin-bottom: 15px
+          text-align: left
+          p
+            flex-basis: 50%
+            font-size: 14px
+            font-weight: 600
+          span
+            font-size: 24px
+            color: $specialClr
+            font-weight: 600
+      .price__btn
+        @include bgBtn(#0a223c)
+        margin-top: 20px
+        position: relative
+        z-index: 1
+        button
+          @include btn($btnClr, $btnHoverClr, $btnBg, $btnHoverCBg, $btnHoverCBg, 11px)
+          text-transform: uppercase
+          padding: 10px
+          width: 100%
+      svg
+        width: 15px
+        vertical-align: text-bottom
+        path
+          fill: $specialClr
+
+//================= ABOUT US ==========//
+#about-us
+  background-color: #090a17
+  padding-top: 50px
+  padding-bottom: 60px
+  h2
+    font-size: 32px
+    font-weight: 600
+    color: $textClr
+    padding-bottom: 50px
+    padding-left: 200px
+    span
+      display: block
+      padding-left: 70px
+      color: $specialClr
+  .about-us__wrap
+    display: flex
+    align-items: center
+    justify-content: space-between
+    .about-us__text
+      padding-right: 30px
+      flex-basis: 50%
+    p
+      font-size: 15px
+      font-weight: 600
+      line-height: 1.4
+      padding-bottom: 15px
+    .about-us__video
+      flex-basis: 50%
+      .about-us__video-wrap
+        position: relative
+        width: 100%
+        padding-bottom: 56%
+        iframe
+          position: absolute
+          width: 100%
+          height: 100%
+
+//================= WEBINAR CYCLE ==========//
+#webinar-cycle
+  padding: 25px 0
+  background-color: $lightBg
+  .webinar-cycle__wrap
+    display: flex
+    justify-content: space-between
+  .webinar-cycle__title
+    flex-basis: 50%
+    padding-top: 25px
+    padding-right: 25px
+    text-align: center
+    color: $webinarCycleTitle
+    text-transform: uppercase
+    h2
+      font-weight: 600
+      font-size: 40px
+      padding-bottom: 14px
+    p
+      font-weight: 600
+      font-size: 21px
+  .webinar-cycle__text
+    flex-basis: 50%
+    h3
+      font-size: 21px
+      line-height: 1.3
+      font-weight: 600
+      color: $webinarCycleTitle
+      padding-bottom: 20px
+    li
+      font-size: 16px
+      font-weight: 600
+      padding-bottom: 10px
+      color: $webinarCycleText
+      span
+        font-size: 28px
+        color: #069cfa
+        text-shadow: 2px 2px 4px #bdbdbd
+
+//================= REGISTRATION ==========//
+#registration
+  padding-top: 50px
+  padding-bottom: 60px
+  background-image: url('../img/tokiobek2.jpg')
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: left center
+  h2
+    font-size: 32px
+    font-weight: 600
+    color: $textClr
+    padding-bottom: 50px
+    span
+      display: block
+      color: #ffff00
+  .registration__wrap
+    display: flex
+    justify-content: space-between
+    align-items: center
+    .registration__text
+      flex-basis: 50%
+      padding-right: 30px
+      h3
+        font-size: 19px
+        text-transform: uppercase
+      p
+        font-weight: 600
+        padding: 5px 0 30px
+        font-size: 14px
+      .registration__price-wrap
+        p
+          padding: 0
+          font-weight: 400
+          font-size: 17px
+          display: inline-block
+      .registration__price
+        padding-left: 5px
+        padding-bottom: 10px
+        span
+          font-weight: 600
+          color: #ffff00
+          font-size: 33px
+          padding-right: 10px
+          vertical-align: sub
+        svg
+          width: 15px
+          vertical-align: text-bottom
+          path
+            fill: #ffff00
+    .registration__form
+      flex-basis: 50%
+    .inputs__wrap
+      padding-left: 30px
+      border-left: 2px solid #656565
+    form
+      width: 100%
+      .input__wrap
+        input
+          font-size: 15px
+          background-color: $lightBg
+          width: 100%
+          padding: 10px
+          border: 0
+          border-bottom: 2px solid #ffffff
+          color: $popupSpeakerClr
+          margin-bottom: 15px
+          &::placeholder
+            color: $popupSpeakerClr
+      .form__btn
+        margin: 30px auto 0
+        text-align: center
+        width: max-content
+        @include bgBtn(#0a223c)
+        button
+          @include btn($btnHoverClr, $btnClr, $btnHoverCBg, $lightBg, $btnHoverCBg, 18px)
+          &:hover
+            border-color: $lightBg
+          padding: 11px 35px
+      label
+        font-size: 15px
+        font-weight: 600
+        display: inline-block
+        padding-bottom: 10px
+
+//================= FQA ==========//
+#fqa
+  background-color: $lightBg
+  padding-top: 50px
+  padding-bottom: 60px
+  h2
+    font-size: 32px
+    font-weight: 600
+    color: $fqaTitle
+    padding-bottom: 20px
+    text-transform: uppercase
+    span
+      display: block
+      padding-left: 230px
+      color: $specialClr
+  .fqa__item
+    color: $fqaText
+    padding-bottom: 10px
+    .fqa__title
+      padding: 19px
+      border-radius: 3px
+      background-color: #e0e0e0
+      text-transform: uppercase
+      margin-bottom: 10px
+      display: flex
+      justify-content: space-between
+      align-items: center
+      .show
+        position: relative
+      span
+        margin-left: 5px
+        display: inline-block
+        width: 15px
+        height: 3px
+        background-color: #848484
+        &:nth-child(2)
+          &.hide
+            opacity: 0
+          position: absolute
+          top: 5px
+          left: 0
+          transform: rotate(90deg)
+          opacity: 1
+          transition: opacity 0.1s
+    h3
+      font-size: 16px
+      color: $fqaTitle
+      font-weight: 600
+      text-transform: uppercase
+      line-height: 1.5
+    .fqa__text
+      display: none
+      padding: 10px 20px
+      line-height: 1.3
+      font-size: 17px
+      background-color: #eaeaea
+      border-radius: 3px
+      a
+        color: $specialClr
+        @include underline
+        display: inline-block
+
+//================= FOOTER ==========//
+#footer
+  background-color: $footerBg
+  padding-top: 75px
+  padding-bottom: 25px
+  color: $footerClr
+  font-size: 15px
+  h3
+    color: $specialClr
+    font-size: 14px
+    text-transform: uppercase
+    font-weight: 600
+    padding-bottom: 20px
+  a, p
+    display: block
+    width: max-content
+    padding-bottom: 10px
+  .footer__info-email, .footer__info-phone a, .footer__section a:not(.footer__log-in)
+    @include underline
+  .footer__wrap
+    display: flex
+    justify-content: space-between
+  .footer__item
+    flex-basis: 30%
+  .footer__info-social
+    display: flex
+    a
+      margin: 10px 5px
+      padding-bottom: 0
+      width: 44px
+      height: 44px
+      border-radius: 50%
+      background-color: $footerBg
+      transition: background-color 0.3s
+      display: flex
+      justify-content: center
+      align-items: center
+      svg
+        height: 24px
+        path
+          fill: $footerClr
+          transition: fill 0.3s
+      &:hover, &:focus
+        background-color: $specialClr
+        svg path
+          fill: #ffffff
+  .footer__info
+    .footer__logo
+      padding-bottom: 20px
+      span
+        color: $specialClr
+        font-weight: 600
+        font-size: 33px
+      p
+        display: inline-block
+        width: calc(100% - 100px)
+        max-height: 200px
+        font-size: 14px
+        padding-left: 10px
+  .footer__speaker-wrap
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    .footer__speaker-item
+      flex-basis: 49%
+      padding-bottom: 2%
+      img
+        width: 100%
+  .footer__section
+    a
+      svg
+        margin-left: 15px
+        width: 10px
+        path
+          fill: #b5b5b5
+      &:hover, &:focus
+        svg path
+          fill: $specialClr
+    .footer__log-in
+      padding: 10px 30px
+      background-color: #333333
+      display: inline-block
+      font-size: 11px
+      font-weight: 600
+      border-radius: 3px
+      letter-spacing: 1px
+      text-transform: uppercase
+      transition: color 0.3s
+      svg
+        width: 10px
+        margin-left: 0
+        path
+          fill: #b5b5b5
+          transition: color 0.3s
+      &:hover, &:focus
+        color: #ffffff
+        svg path
+          fill: #ffffff
+    .footer__section-pay
+      img
+        height: 32px
+        margin-right: 4px
+        margin-bottom: 5px
+  .footer__section-subtitle
+    display: inline-block
+    width: 100%
+    padding: 20px 0 15px
+    font-size: 11px
+    line-height: 27px
+    text-transform: uppercase
+    color: $textClr
+  p.footer__copyright
+    padding-top: 25px
+    font-weight: 600
+    color: #bdbdbd
+    font-size: 15px
+    width: 100%
+    text-align: center
+//================= Our contact popup ==========//
+.our-contact-popup
+  padding: 10px
+  position: fixed
+  width: 100%
+  height: 100%
+  top: 0
+  left: 0
+  background-color: rgba($darkBg, 0.3)
+  z-index: 15
+  transform: translateY(-150%)
+  transition: all 0.3s
+  &.show
+    transform: translateY(0%)
+  .popup__wrap
+    background-color: rgba(10, 9, 23, 0.86)
+    border-radius: 5px
+    padding: 20px 20px 30px
+    width: 100%
+    max-width: 375px
+    text-align: center
+    color: $textClr
+    font-size: 22px
+    font-weight: 600
+    letter-spacing: 1px
+    position: relative
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
+    .popup__close
+      position: absolute
+      top: 20px
+      right: 20px
+      width: 19px
+      height: 19px
+      svg path
+        transition: fill 0.3s
+      &:hover svg path
+        fill: #ffffff
+        opacity: 0.7
+    h2, span
+      display: block
+      color: #b1b1b1
+      font-size: 20px
+      font-weight: 600
+      padding-bottom: 30px
+    span
+      padding-bottom: 0
+    a
+      position: relative
+      display: inline-block
+      padding: 6px
+      &.popup__link
+        svg
+          opacity: 0.4
+          width: 17px
+          position: absolute
+          right: -20px
+          bottom: 0
+          path
+            fill: #ffffff
+        @include underline
+      &.popup__whatsapp, &.popup__viber
+        display: flex
+        justify-content: center
+        align-items: center
+        margin: 15px auto 10px
+        width: 45px
+        height: 45px
+        border-radius: 50%
+        transition: background-color 0.3s
+        &:hover
+          background-color: #ffffff
+          svg path
+            fill: #336198
+        svg
+          width: 65%
+          path
+            transition: fill 0.3s
+      &.popup__whatsapp
+        background-color: #00ad33
+      &.popup__viber
+        background-color: #74488e
+
+//================= Speaker popup ==========//
+.speaker-popup
+  position: fixed
+  padding: 10px
+  width: 100%
+  height: 100%
+  overflow-y: scroll
+  top: 0
+  left: 0
+  background-color: rgba($darkBg, 0.3)
+  z-index: 15
+  transform: translateY(-500%)
+  transition: all 0.3s
+  &.show
+    transform: translateY(0%)
+  .popup__wrap
+    background-color: $lightBg
+    border-radius: 5px
+    width: 100%
+    max-width: 900px
+    margin: 25px auto
+    color: $textClr
+    position: relative
+    .popup__close
+      position: absolute
+      top: 20px
+      right: 20px
+      width: 19px
+      height: 19px
+      svg path
+        fill: #ffffff
+        transition: fill 0.3s
+      &:hover svg path
+        fill: #ffffff
+        opacity: 0.7
+  .popup__title
+    padding-top: 30px
+    background-color: #0a0917
+    color: $textClr
+    display: flex
+    justify-content: space-between
+    .speaker-img
+      flex-basis: 35%
+      img
+        width: 100%
+        max-width: 250px
+    .speaker__about
+      padding-right: 20px
+      flex-basis: 60%
+    h3
+      font-size: 35px
+      font-weight: 600
+      line-height: 1.3
+      padding-bottom: 10px
+    p
+      font-size: 14px
+      line-height: 1.2
+    .speaker-popup__btn
+      padding-top: 15px
+      color: $specialClr
+      font-size: 17px
+      line-height: 1.2
+      font-weight: 600
+      position: relative
+      @include underline
+      svg
+        opacity: 0.4
+        width: 15px
+        position: absolute
+        right: -20px
+        bottom: 0
+        path
+          fill: #ffffff
+    form
+      display: none
+      padding: 20px 0
+      background-color: $formBg
+      input
+        background-color: $lightBg
+        width: 100%
+        padding: 10px
+        border: 0
+        border-bottom: 2px solid #ffffff
+        color: $popupSpeakerClr
+        margin-bottom: 15px
+        &::placeholder
+          color: $popupSpeakerClr
+      button
+        @include btn($btnHoverClr, $btnClr, $btnClr, $btnHoverClr, $btnHoverCBg, 11px)
+        text-transform: uppercase
+        padding: 10px 20px
+        width: 100%
+        min-width: 150px
+        &:hover
+          border-color: #ffffff
+      .form__btn
+        @include bgBtn(#0a223c)
+        margin-top: 10px
+        position: relative
+        z-index: 1
+        width: max-content
+        &:after
+          border-radius: 10px
+  .popup__text
+    background-color: $lightBg
+    padding: 18px 60px 63px
+    color: $popupSpeakerClr
+    font-size: 15px
+    h4
+      font-size: 27px
+      line-height: 1.3
+      font-weight: 600
+      padding-bottom: 18px
+    ul, p
+      line-height: 1.5
+      padding-bottom: 15px
+      font-weight: 400
+    p.subtitle
+      font-size: 27px
+      padding: 18px 0
+      line-height: 1.3
+
+//================= Participate popup ==========//
+.participate-popup
+  padding: 10px
+  position: fixed
+  width: 100%
+  height: 100%
+  top: 0
+  left: 0
+  background-color: rgba($darkBg, 0.3)
+  z-index: 15
+  transform: translateY(-150%)
+  transition: all 0.3s
+  &.show
+    transform: translateY(0%)
+  .popup__wrap
+    background-color: #0a0917
+    border-radius: 5px
+    padding: 30px 40px 40px
+    width: 100%
+    max-width: 900px
+    text-align: center
+    color: $textClr
+    font-size: 22px
+    font-weight: 600
+    letter-spacing: 1px
+    position: relative
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
+    .popup__close
+      position: absolute
+      top: 20px
+      right: 20px
+      width: 19px
+      height: 19px
+      svg path
+        transition: fill 0.3s
+      &:hover svg path
+        fill: #ffffff
+        opacity: 0.7
+    h2
+      font-size: 25px
+      font-weight: 600
+      padding-bottom: 40px
+    form
+      .inputs__wrap
+        display: flex
+        justify-content: space-between
+      .input__wrap
+        text-align: left
+        flex-basis: 30%
+        input
+          font-size: 15px
+          width: 100%
+          border-bottom: 2px solid $lightBg
+          color: #242424
+          padding: 12px 10px
+          transition: background-color 0.3s
+          &:hover, &:focus
+            background-color: $lightBg
+      .form__btn
+        margin: 30px auto 0
+        text-align: center
+        width: max-content
+        @include bgBtn(#0a223c)
+        button
+          @include btn($btnHoverClr, $btnClr, $btnHoverCBg, $lightBg, $btnHoverCBg, 18px)
+          &:hover
+            border-color: $lightBg
+          padding: 11px 35px
+      label
+        font-size: 15px
+        font-weight: 600
+        display: inline-block
+        padding-bottom: 10px
+
+//================= BUTTON UP ==========//
+.btn-up
+  display: block
+  position: fixed
+  z-index: 20
+  bottom: 100px
+  right: 50px
+  width: 50px
+  height: 50px
+  border-radius: 50%
+  box-shadow: 0 0 22px -4px #383434
+  background-color: rgba(255, 255, 255, 0.38)
+  svg
+    width: 40%
+  &:hover
+    background-color: #ffffff
+    box-shadow: 0 0 23px -1px #3e3e3e
+
+//================= Media queries ==========//
+@media screen and (max-width: 1600px)
+  .container
+    padding: 0 250px
+
+@media screen and (max-width: 1440px)
+  .container
+    padding: 0 150px
+
+@media screen and (max-width: 1200px)
+  .container
+    padding: 0 100px
+  #home
+    .home__speakers-top
+      margin-bottom: 20px
+      img
+        padding-left: 20px
+    .home__speakers-imgs
+      padding-left: 20px
+    .home__cta
+      padding-left: 20px
+
+@media screen and (max-width: 991px)
+  .container
+    padding: 0 60px
+  #header
+    padding: 7px 0
+    .logo img
+      width: 115px
+  #home
+    background-image: url('../img/fon_mob2tokio.jpg')
+    background-position: center top
+    .home__text
+      padding-bottom: 100px
+    .header__wrap
+      flex-wrap: wrap
+    .home__speakers
+      flex-basis: 100%
+      padding-left: 0
+    .home__speakers-imgs
+      padding: 0
+      margin-bottom: 45px
+      img
+        padding: 0 20px
+    .home__speakers-top
+      margin-bottom: 45px
+      img
+        padding: 0 20px
+  #program
+    .program__content
+      flex-wrap: wrap
+      justify-content: center
+    .program__item
+      .program__event-theme p
+        max-width: 420px
+      &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5)
+        flex-basis: 100%
+        max-width: 700px
+        img
+          max-width: 300px
+  .speaker-popup
+    .popup__wrap
+      margin-top: 0
+      max-width: 550px
+    .popup__title
+      padding: 25px
+      justify-content: center
+      flex-wrap: wrap
+      .speaker-img
+        flex-basis: 100%
+        text-align: center
+        img
+          width: 100%
+          max-width: 200px
+      .speaker__about
+        flex-basis: 100%
+        padding-right: 0
+    .popup__text
+      padding: 18px 30px 30px
+  #price
+    h2
+      padding-left: 0
+      span
+        padding-left: 0
+    .price__wrap
+      flex-wrap: wrap
+    .price__left
+      padding-bottom: 50px
+    .price__left, .price__right
+      flex-basis: 100%
+  #about-us
+    h2
+      padding-left: 0
+      span
+        padding-left: 0
+    .about-us__wrap
+      flex-wrap: wrap
+      .about-us__text
+        flex-basis: 100%
+        padding-right: 0
+      .about-us__video
+        flex-basis: 100%
+  #webinar-cycle .webinar-cycle__wrap
+    flex-wrap: wrap
+    .webinar-cycle__title
+      flex-basis: 100%
+      padding-right: 0
+      padding-bottom: 50px
+    .webinar-cycle__text
+      flex-basis: 100%
+  #registration
+    background-position: center
+    .registration__wrap
+      flex-wrap: wrap
+      justify-content: center
+      .registration__text
+        flex-basis: 100%
+        padding-right: 0
+        padding-bottom: 50px
+      .registration__form
+        flex-basis: 100%
+        max-width: 760px
+        .inputs__wrap
+          padding-left: 0
+          border: 0
+  #fqa h2 span
+    padding-left: 0
+  #footer
+    .footer__wrap
+      flex-wrap: wrap
+    .footer__item
+      flex-basis: 48%
+      padding-bottom: 30px
+@media screen and (max-width: 768px)
+  #header
+    .header__show-menu
+      position: relative
+      z-index: 11
+      display: block
+    .menu
+      transform: translateX(-100%)
+      position: fixed
+      top: 0
+      left: 0
+      z-index: 10
+      height: 100%
+      width: 100%
+      background-color: rgba($menuBg, 0.95)
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      transition: all 0.3s
+      li a.hidden-logo
+        display: block
+        position: absolute
+        top: 10px
+        padding: 0
+        left: 50%
+        transform: translateX(-50%)
+        img
+          width: 115px
+      a
+        font-size: 24px
+        padding: 15px 0
+        text-transform: uppercase
+      &.show
+        transform: translateX(0%)
+        a
+          color: #ffffff!important
+          &:hover
+            color: $specialClr!important
+    .header__menu
+      flex-basis: calc(100% - 37px)
+      justify-content: space-between
+    .logo
+      order: 2
+      padding-right: 0
+    span
+      order: 3
+    .header__contacts
+      position: relative
+      z-index: 11
+  .btn-up
+    right: 20px
+  #price .price__right
+    flex-wrap: wrap
+    .price__option
+      flex-basis: 100%
+      margin-bottom: 50px
+  .participate-popup .popup__wrap form
+    .inputs__wrap
+      flex-wrap: wrap
+    .input__wrap
+      flex-basis: 100%
+  #registration
+    background-image: url('../img/fon_mob2tokio.jpg')
+    background-position: center top
+
+@media screen and (max-width: 620px)
+  .container
+    padding: 0 40px
+  #home
+    .home__speakers-top img
+      padding: 0 10px
+    .home__speakers-bottom
+      flex-wrap: wrap
+    .home__speakers-imgs
+      width: 100%
+      padding-left: 0
+      text-align: center
+      img
+        width: 33.33%
+        padding: 0 10px
+    .home__cta
+      width: 100%
+      padding-left: 0
+  #footer
+    .footer__item
+      flex-basis: 100%
+    .footer__speaker-wrap
+      justify-content: flex-start
+      .footer__speaker-item
+        max-width: 150px
+        padding-left: 2%
+
+
+@media screen and (max-width: 475px)
+  .container
+    padding: 0 20px
+  #home
+    .home__text .title
+      font-size: 38px
+    .home__speakers-top
+      flex-wrap: wrap
+      justify-content: center
+      margin-bottom: 0
+      img
+        width: 48%
+        padding-bottom: 20px
+    .home__speakers-imgs
+      img
+        width: 48%
+        padding-bottom: 20px
+  #registration .registration__wrap .registration__text .registration__price span
+    font-size: 30px

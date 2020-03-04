@@ -1,0 +1,54 @@
+//========= keyframes ======//
+@keyframes pulse
+  0%
+    background-color: #004f83
+    box-shadow: none
+  50%
+    background-color: #0070bd
+    box-shadow: 0 0 15px 2px rgba(#0070bd, 0.7)
+  100%
+    background-color: #004f83
+    box-shadow: none
+
+@keyframes pulseCLr
+  0%
+    color: $formTitle
+  45%
+    color: rgba($formTitle, 0.7)
+  65%
+    color: rgba($formTitle, 0.4)
+  90%
+    color: rgba($textClr, 0.4)
+  95%
+    color: rgba($textClr, 0.7)
+  100%
+    color: $textClr
+
+@keyframes pulseFill
+  0%
+    fill: $formTitle
+  45%
+    fill: rgba($formTitle, 0.7)
+  65%
+    fill: rgba($formTitle, 0.4)
+  90%
+    fill: rgba($textClr, 0.4)
+  95%
+    fill: rgba($textClr, 0.7)
+  100%
+    fill: $textClr
+
+
+@keyframes pulseBtn
+  0%
+    padding: 0
+    top: 0
+    left: 0
+  50%
+    padding: 15px
+    top: -15px
+    left: -15px
+  100%
+    padding: 0
+    top: 0
+    left: 0

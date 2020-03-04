@@ -1,0 +1,42 @@
+@mixin btn($clr, $clrHover, $bg, $bgHover, $border, $fontSize)
+  position: relative
+  z-index: 2
+  font-size: $fontSize
+  font-weight: 600
+  color: $clr
+  border: 2px solid $border
+  background-color: $bg
+  transition: background-color 0.3s, color 0.3s
+  &:hover, &:focus
+    background-color: $bgHover
+    color: $clrHover
+
+@mixin bgBtn($aftBg)
+  position: relative
+  z-index: 1
+  &::after
+    content: ""
+    position: absolute
+    top: 0
+    left: 0
+    display: block
+    width: 100%
+    z-index: -1
+    height: 100%
+    background-color: $aftBg
+    animation: pulseBtn 1s cubic-bezier(.66, 0, 0, 1) infinite
+
+@mixin underline()
+  &::after
+    content: ""
+    display: block
+    margin-top: 5px
+    width: 0
+    height: 2px
+    background-color: $specialClr
+    transition: width 0.3s
+  &:hover
+    color: $specialClr
+    &::after
+      width: 100%
+
